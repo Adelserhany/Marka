@@ -1,0 +1,301 @@
+Package Report
+
+-----------------------------------------------------------------------------
+Document:
+Name: Marka Website.ai
+Color Mode: RGB color
+Color Profile: Display
+Ruler Units: pixels
+Artboard Dimensions: 8882.209 px x 695.8056 px
+Show Images in Outline Mode: OFF
+Highlight Substituted Fonts: OFF
+Highlight Substituted Glyphs: OFF
+Preserve Text Editability
+Simulate Colored Paper: OFF
+
+-----------------------------------------------------------------------------
+Spot Color Objects:
+
+-----------------------------------------------------------------------------
+Missing Fonts:NONE
+
+-----------------------------------------------------------------------------
+Protected Fonts that were not packaged:NONE
+
+-----------------------------------------------------------------------------
+Fonts:
+Jokker-TRIAL Light (OTF)
+Jokker-TRIAL Regular (OTF)
+Jokker-TRIAL Semibold (OTF)
+GE SS Two Light Light (OTF)
+
+-----------------------------------------------------------------------------
+Embedded Fonts:
+NONE
+
+-----------------------------------------------------------------------------
+Missing Links:
+NONE
+
+-----------------------------------------------------------------------------
+Linked Images:
+
+/Users/adwaadil/Documents/MARKA/Adel's files/3D /y_02.png
+Type: Transparent RGB
+Bits per Pixel: 32
+Channels: 4
+Size: 17775K, 2844 by 1600 pixels
+Dimensions: 1920 by 1080.169 points 
+Resolution: 106.65 by 106.65 pixels per inch
+
+
+/Users/adwaadil/Downloads/Final (1)/Green 4.jpg
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 218262K, 10054 by 7410 pixels
+Dimensions: 432.519 by 318.776 points 
+Resolution: 1673.654 by 1673.654 pixels per inch
+
+
+/Users/adwaadil/Downloads/Final (1)/Red 5 2.jpg
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 148401K, 7952 by 6370 pixels
+Dimensions: 641.669 by 514.013 points 
+Resolution: 892.272 by 892.272 pixels per inch
+
+
+/Users/adwaadil/Downloads/Final (1)/Green & Red.jpg
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 136704K, 7240 by 6445 pixels
+Dimensions: 339.569 by 302.282 points 
+Resolution: 1535.124 by 1535.124 pixels per inch
+
+
+/Users/adwaadil/Downloads/Final (1)/ssss.jpg
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 148401K, 7952 by 6370 pixels
+Dimensions: 487.117 by 390.208 points 
+Resolution: 1175.373 by 1175.373 pixels per inch
+
+
+/Users/adwaadil/Downloads/Final (1)/Green 6.jpg
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 194568K, 8576 by 7744 pixels
+Dimensions: 504.564 by 455.614 points 
+Resolution: 1223.773 by 1223.773 pixels per inch
+
+
+/Users/adwaadil/Downloads/Final (1)/Green 7.jpg
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 137875K, 7366 by 6389 pixels
+Dimensions: 422.031 by 366.055 points 
+Resolution: 1256.665 by 1256.665 pixels per inch
+
+
+/Users/adwaadil/Downloads/Final (1)/Red 4.jpg
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 97206K, 6393 by 5190 pixels
+Dimensions: 568.973 by 461.907 points 
+Resolution: 808.994 by 808.994 pixels per inch
+
+
+/Users/adwaadil/Downloads/Final (1)/Green 2.jpg
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 97206K, 6393 by 5190 pixels
+Dimensions: 568.252 by 461.322 points 
+Resolution: 810.021 by 810.021 pixels per inch
+
+
+/Users/adwaadil/Downloads/Final (1)/Green 5.jpg
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 218262K, 10054 by 7410 pixels
+Dimensions: 510.22 by 376.042 points 
+Resolution: 1418.776 by 1418.776 pixels per inch
+
+
+/Users/adwaadil/Downloads/Final (1)/Red 3.jpg
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 97206K, 6393 by 5190 pixels
+Dimensions: 562.757 by 456.86 points 
+Resolution: 817.931 by 817.931 pixels per inch
+
+
+/Users/adwaadil/Downloads/Final (1)/Green 3.jpg
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 218262K, 10054 by 7410 pixels
+Dimensions: 510.22 by 376.042 points 
+Resolution: 1418.776 by 1418.776 pixels per inch
+
+
+/Users/adwaadil/Downloads/Final (1)/Green 1.jpg
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 97206K, 6393 by 5190 pixels
+Dimensions: 568.45 by 461.482 points 
+Resolution: 809.739 by 809.739 pixels per inch
+
+
+/Users/adwaadil/Documents/MARKA/Adel's files/Concept Drawings /Scrabs.png
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 16392K, 2732 by 2048 pixels
+Dimensions: 954.36 by 715.421 points 
+Resolution: 206.111 by 206.111 pixels per inch
+
+
+/Users/adwaadil/Documents/MARKA/Adel's files/Concept Drawings /IMG_6524.PNG
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 35721K, 3024 by 4032 pixels
+Dimensions: 519.454 by 692.605 points 
+Resolution: 419.148 by 419.148 pixels per inch
+
+
+/Users/adwaadil/Documents/MARKA/Adel's files/Concept Drawings /IMG_6524.PNG
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 35721K, 3024 by 4032 pixels
+Dimensions: 766 by 1021.334 points 
+Resolution: 284.24 by 284.24 pixels per inch
+
+
+/Users/adwaadil/Documents/MARKA/Adel's files/Concept Drawings /Scrabs.png
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 16392K, 2732 by 2048 pixels
+Dimensions: 959.976 by 719.63 points 
+Resolution: 204.905 by 204.905 pixels per inch
+
+
+/Users/adwaadil/Documents/MARKA/Adel's files/Concept Drawings /Scrabs.png
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 16392K, 2732 by 2048 pixels
+Dimensions: 1041.71 by 780.901 points 
+Resolution: 188.828 by 188.828 pixels per inch
+
+
+/Users/adwaadil/Documents/MARKA/Adel's files/Concept Drawings /IMG_6524.PNG
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 35721K, 3024 by 4032 pixels
+Dimensions: 553.242 by 737.655 points 
+Resolution: 393.55 by 393.55 pixels per inch
+
+
+/Users/adwaadil/Documents/MARKA/Adel's files/Concept Drawings /IMG_6524.PNG
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 35721K, 3024 by 4032 pixels
+Dimensions: 625.172 by 833.562 points 
+Resolution: 348.269 by 348.269 pixels per inch
+
+
+/Users/adwaadil/Documents/MARKA/Adel's files/Concept Drawings /IMG_6522.PNG
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 35721K, 3024 by 4032 pixels
+Dimensions: 530.48 by 707.307 points 
+Resolution: 410.436 by 410.436 pixels per inch
+
+
+/Users/adwaadil/Documents/MARKA/Adel's files/Concept Drawings /Untitled_Artwork 36.png
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 16392K, 2732 by 2048 pixels
+Dimensions: 949.685 by 711.916 points 
+Resolution: 207.126 by 207.126 pixels per inch
+
+
+/Users/adwaadil/Documents/MARKA/Adel's files/Concept Drawings /Untitled_Artwork 36.png
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 16392K, 2732 by 2048 pixels
+Dimensions: 832.05 by 623.733 points 
+Resolution: 236.409 by 236.409 pixels per inch
+
+
+/Users/adwaadil/Downloads/Final (1)/Green & Red.jpg
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 136704K, 7240 by 6445 pixels
+Dimensions: 838.304 by 746.253 points 
+Resolution: 621.827 by 621.827 pixels per inch
+
+
+/Users/adwaadil/Documents/MARKA/Adel's files/3D /IMG_7003.JPG
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 12288K, 2048 by 2048 pixels
+Dimensions: 718.027 by 718.027 points 
+Resolution: 205.363 by 205.363 pixels per inch
+
+
+/Users/adwaadil/Downloads/Final (1)/Green 7.jpg
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 137875K, 7366 by 6389 pixels
+Dimensions: 1399.634 by 1213.992 points 
+Resolution: 378.922 by 378.922 pixels per inch
+
+
+/Users/adwaadil/Downloads/Final (1)/Green 6.jpg
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 194568K, 8576 by 7744 pixels
+Dimensions: 1261.514 by 1139.129 points 
+Resolution: 489.469 by 489.469 pixels per inch
+
+
+/Users/adwaadil/Downloads/Final (1)/Red 5 2.jpg
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 148401K, 7952 by 6370 pixels
+Dimensions: 1406.011 by 1126.294 points 
+Resolution: 407.212 by 407.212 pixels per inch
+
+
+/Users/adwaadil/Documents/MARKA/Adel's files/Visual Researsh/ChatGPT Image 10 ???? 2026? 12_34_39 ? copy.png
+Type: RGB
+Bits per Pixel: 24
+Channels: 3
+Size: 11310K, 2097 by 1841 pixels
+Dimensions: 969.111 by 850.803 points 
+Resolution: 155.796 by 155.796 pixels per inch

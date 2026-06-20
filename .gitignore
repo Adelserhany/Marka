@@ -1,0 +1,31 @@
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Editor / IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Node (not used here, but future-proof)
+node_modules/
+
+# Local preview temp files
+/private/tmp/
+
+# Illustrator temp files
+*.tmp
+~*.tmp
+
+# Large source files (over GitHub's 100 MB limit — kept locally only)
+Videos/3D GIF.mov
+Videos/Lines Animation.mov
+Website_Ai File/Marka Website.ai
+
+# Claude session state (local only)
+SESSION_STATE.md
+.claude/

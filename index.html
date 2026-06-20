@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MARKA — A critical design practice by Adel Serhany exploring modular furniture, cultural identity, and the Arabian Peninsula.">
+  <title>MARKA — Adel Serhany</title>
+
+  <style>
+    /* ── FONTS ─────────────────────────────────────────────────── */
+    @font-face {
+      font-family: 'Jokker';
+      src: url('Website_Ai%20File/Fonts/Jokker-TRIAL-Light.ttf') format('truetype');
+      font-weight: 300;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Jokker';
+      src: url('Website_Ai%20File/Fonts/Jokker-TRIAL-Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Jokker';
+      src: url('Website_Ai%20File/Fonts/Jokker-TRIAL-Semibold.ttf') format('truetype');
+      font-weight: 600;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'GE SS Two';
+      src: url('Website_Ai%20File/Fonts/GE%20SS%20Two%20Light.otf') format('opentype');
+      font-weight: 300;
+      font-display: swap;
+    }
+
+    /* ── RESET & BASE ──────────────────────────────────────────── */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --dim: rgba(255, 255, 255, 0.38);
+      --border: rgba(255, 255, 255, 0.1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jokker', 'Helvetica Neue', sans-serif;
+      background: var(--white);
+      color: var(--black);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── SPLASH ────────────────────────────────────────────────── */
+    #splash {
+      position: fixed;
+      inset: 0;
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.85s cubic-bezier(0.4, 0, 0.2, 1),
+                  visibility 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    #splash.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    #splash-logo {
+      font-family: 'Jokker', sans-serif;
+      font-weight: 600;
+      font-size: clamp(72px, 13vw, 172px);
+      color: var(--white);
+      letter-spacing: 0.015em;
+      opacity: 0;
+      transform: translateY(14px);
+      animation: splashReveal 0.9s 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    @keyframes splashReveal {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── HERO ──────────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 500px;
+      background: var(--white);
+      overflow: hidden;
+    }
+    #hero-video {
+      display: none; /* SVG CSS animation replaces the video */
+    }
+
+    #hero-nav {
+      position: relative;
+      z-index: 3;
+      padding: clamp(22px, 3.2vw, 44px) clamp(22px, 3.2vw, 48px);
+      display: flex;
+      align-items: flex-start;
+      gap: 5px;
+    }
+    .nav-logo {
+      font-weight: 600;
+      font-size: clamp(48px, 8.9vw, 171px);
+      color: var(--black);
+      letter-spacing: -0.01em;
+      line-height: 1;
+      user-select: none;
+    }
+    /* Human scale-figure icon beside logo */
+    .nav-figure {
+      /* height = ~18% of font cap-height, positioned at cap top */
+      width: clamp(11px, 1.35vw, 26px);
+      margin-top: 0;
+      align-self: flex-start;
+      flex-shrink: 0;
+    }
+
+    /* ── HERO + TEXT SHARED BACKGROUND ────────────────────────── */
+    #hero-text-wrapper {
+      position: relative;
+    }
+    /* X-shape — fixed so it covers hero + work section; hides at stepmotion */
+    #lines-bg {
+      position: fixed;
+      left: 0;
+      /* top = (vh - svgH) / 2 → centers element so 50% 50% == viewport center */
+      top: calc((100vh - 100vw * 1960 / 1920) / 2);
+      width: 100vw;
+      height: calc(100vw * 1960 / 1920); /* matches SVG viewBox aspect ratio */
+      pointer-events: none;
+      z-index: 0;
+      transform: rotate(-45deg); /* -45° = "+" form; JS drives 0° = "X" */
+      transform-origin: 50% 50%;
+      will-change: transform;
+    }
+
+    /* Draw-in animation: each path starts invisible (dashoffset=1) and draws to 0 */
+    .x-path {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+    }
+    @keyframes xDraw {
+      to { stroke-dashoffset: 0; }
+    }
+    /* Long "/" diagonal first, then the two "\" segments — timed after splash (2.5 s) */
+    #xp-c { animation: xDraw 1.4s 2.8s ease-out forwards; }
+    #xp-a { animation: xDraw 0.9s 3.5s ease-out forwards; }
+    #xp-b { animation: xDraw 0.9s 3.9s ease-out forwards; }
+
+    /* Hero transparent so X-shape shows through */
+    #hero {
+      background: transparent;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── TEXT SECTION ──────────────────────────────────────────── */
+    #text-section {
+      position: relative;
+      width: 100%;
+      min-height: auto;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      padding: clamp(60px, 9vh, 140px) clamp(22px, 5.5vw, 88px);
+      z-index: 2;
+    }
+    #text-section p {
+      position: relative;
+      z-index: 2;
+      font-weight: 400;
+      font-size: clamp(32px, 4vw, 64px);
+      line-height: 1.25;
+      color: var(--black);
+      max-width: 1400px;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    .arabic {
+      font-family: 'GE SS Two', 'Jokker', sans-serif;
+      font-weight: 300;
+    }
+
+
+
+    /* ── STEPMOTION ────────────────────────────────────────────── */
+    #stepmotion {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 600px;
+      overflow: hidden;
+      background: #fff;
+      margin-top: clamp(60px, 8vh, 120px);
+    }
+
+    /* top photo grid — 2 rows, fills top 55% */
+    #sm-top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 55%;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      background: #ccc;
+    }
+    #sm-row1,
+    #sm-row2 {
+      display: flex;
+      flex: 1;
+      gap: 2px;
+      min-height: 0;
+    }
+    #sm-row1 img,
+    #sm-row2 img {
+      flex: 1;
+      min-width: 0;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* bottom sketches — fills bottom 45% */
+    #sm-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 45%;
+      background: #fff;
+      overflow: hidden;
+    }
+    #sm-bottom img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    /* animated 3-D render — centred over the seam */
+    #sm-frames {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: clamp(400px, 54vw, 860px);
+      aspect-ratio: 1 / 1.05;
+      z-index: 10;
+      pointer-events: none;
+    }
+    .sm-frame {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0;
+    }
+    .sm-frame.active { opacity: 1; }
+
+
+    /* ── ABOUT ─────────────────────────────────────────────────── */
+    #about {
+      background: var(--black);
+      color: var(--white);
+      min-height: 100vh;
+      padding: clamp(48px, 7.5vh, 100px) clamp(22px, 3.2vw, 48px) clamp(28px, 4.5vh, 56px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto 1fr auto;
+      column-gap: 48px;
+    }
+    .about-name {
+      grid-column: 1;
+      grid-row: 1;
+      font-weight: 600;
+      font-size: clamp(42px, 5.8vw, 88px);
+      line-height: 1.0;
+      letter-spacing: -0.015em;
+      align-self: start;
+    }
+    .about-bio {
+      grid-column: 2;
+      grid-row: 1 / 3;
+      font-weight: 300;
+      font-size: clamp(18px, 1.6vw, 24px);
+      line-height: 1.55;
+      padding-top: 4px;
+      max-width: 500px;
+      color: rgba(255, 255, 255, 0.82);
+    }
+    .about-social {
+      grid-column: 1;
+      grid-row: 2;
+      display: flex;
+      gap: clamp(18px, 2vw, 30px);
+      align-items: center;
+      padding-top: 26px;
+      flex-wrap: wrap;
+    }
+    .about-social a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 300;
+      font-size: clamp(13px, 0.95vw, 15px);
+      letter-spacing: 0.01em;
+      transition: opacity 0.22s ease;
+    }
+    .about-social a:hover { opacity: 0.42; }
+
+    .about-spacer {
+      grid-column: 1 / -1;
+      grid-row: 3;
+      min-height: 60px;
+    }
+    .about-footer {
+      grid-column: 1 / -1;
+      grid-row: 4;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      margin-top: 40px;
+    }
+    .about-credits {
+      font-weight: 300;
+      font-size: 11px;
+      line-height: 2.1;
+      color: rgba(255, 255, 255, 0.65);
+    }
+    .about-credits a {
+      color: rgba(255, 255, 255, 0.58);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .about-credits a:hover { color: var(--white); }
+
+    .about-icon {
+      opacity: 0.28;
+      flex-shrink: 0;
+      margin-left: 24px;
+    }
+    .about-icon svg {
+      width: clamp(38px, 3.5vw, 54px);
+      height: auto;
+      display: block;
+    }
+
+    /* ── WORK / PROJECTS CARD SLIDER ──────────────────────────── */
+
+    /* Tall section provides scroll budget; sticky inner locks viewport */
+    #work-section {
+      position: relative;
+      /* JS sets exact height = total card track width + 1vh so pin
+         releases the moment the last card finishes entering.
+         This is a safe CSS fallback only. */
+      height: calc(10 * 100vh);
+      z-index: 20;
+      margin-top: 0; /* text now lives inside work-sticky, no overlap needed */
+    }
+
+    /* Background text — pinned with the section while cards slide over it */
+    #slider-bg-text {
+      position: absolute;
+      inset: 0;
+      padding-bottom: 110px;          /* mirrors work-sticky padding */
+      display: flex;
+      align-items: center;
+      padding-left:  clamp(22px, 5.5vw, 88px);
+      padding-right: clamp(22px, 5.5vw, 88px);
+      z-index: 1;                     /* behind card track (z-index:10) */
+      pointer-events: none;
+    }
+    #slider-bg-text p {
+      font-weight: 400;
+      font-size: clamp(20px, 2.2vw, 32px);
+      line-height: 1.5;
+      color: var(--black);
+      max-width: 900px;
+      word-wrap: break-word;
+    }
+
+    #work-sticky {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      /* Fully transparent — no scrim/veil between text and cards */
+      background: transparent;
+      padding-bottom: 110px;
+    }
+
+    /* ── Card track ─────────────────────────────────────────────── */
+    #work-track {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      will-change: transform;
+      position: relative;
+      /* Raised above text-section (z-index:2) — cards sit on top */
+      z-index: 10;
+    }
+
+    /* ── Individual cards ───────────────────────────────────────── */
+    .work-card {
+      flex-shrink: 0;
+      /* Height locked to artboard native (696 px); width follows image ratio */
+      width: auto;
+      height: clamp(320px, 52vh, 560px);
+      border-radius: 20px;
+      overflow: hidden;
+      background: #fff;     /* solid — never transparent */
+      opacity: 1;           /* fully opaque */
+      position: relative;   /* own stacking context within the track */
+      box-shadow: 0 16px 64px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.08);
+    }
+
+    .work-card img {
+      /* Natural aspect-ratio sizing: height fills card, width follows ratio */
+      height: 100%;
+      width: auto;
+      display: block;
+      pointer-events: none;
+      /* No object-fit — full image visible, card width = image ratio × height */
+    }
+
+    /* ── Thumbnail strip ────────────────────────────────────────── */
+    #work-thumbs {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100px;
+      display: flex;
+      align-items: stretch;
+      gap: 3px;
+      overflow: hidden;
+      z-index: 3;
+    }
+    #work-thumbs img {
+      flex: 1;
+      min-width: 0;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── RESPONSIVE ────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      /* Mobile: disable scroll-jacking, show as vertical stack */
+      #work-section {
+        height: auto;
+        margin-top: 0;
+        z-index: 5;
+      }
+      #work-sticky {
+        position: static;
+        height: auto;
+        overflow: visible;
+        display: block;
+        padding: 48px 22px 0;
+        background: transparent;
+      }
+      #work-track {
+        flex-direction: column;
+        transform: none !important;
+        gap: 20px;
+        align-items: stretch;
+        position: static;
+        z-index: auto;
+      }
+      .work-card {
+        width: 100%;
+        height: clamp(200px, 60vw, 400px);
+        border-radius: 12px;
+      }
+      #lines-bg {
+        display: none; /* X-shape hidden on mobile */
+      }
+      #slider-bg-text {
+        display: none; /* hidden on mobile — cards stack vertically, no text bg */
+      }
+      #work-thumbs {
+        display: none; /* hidden on mobile */
+      }
+      #about {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto 1fr auto;
+        column-gap: 0;
+      }
+      .about-name  { grid-column: 1; grid-row: 1; }
+      .about-social { grid-column: 1; grid-row: 2; padding-top: 20px; }
+      .about-bio   { grid-column: 1; grid-row: 3; padding-top: 28px; max-width: 100%; }
+      .about-spacer { grid-row: 4; min-height: 40px; }
+      .about-footer { grid-row: 5; }
+
+      #stepmotion-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+      }
+
+      #text-section {
+        padding: 60px 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── SPLASH ───────────────────────────────────────────────── -->
+  <div id="splash">
+    <span id="splash-logo">MARKA</span>
+  </div>
+
+  <!-- ── HERO + TEXT (shared lines background) ────────────────── -->
+  <div id="hero-text-wrapper">
+
+    <!-- Lines from the .ai file — spans both hero and text sections.
+         translate(0,-1450) shifts paths to start at y=0 of the viewBox. -->
+    <svg id="lines-bg"
+         viewBox="0 0 1920 1960"
+         preserveAspectRatio="xMidYMid meet"
+         xmlns="http://www.w3.org/2000/svg"
+         aria-hidden="true">
+      <g fill="none" stroke="#612410" stroke-width="2"
+         vector-effect="non-scaling-stroke"
+         transform="translate(0,-1450)">
+
+        <!-- Shape C: long "/" diagonal pill (draws first — longest stroke) -->
+        <path id="xp-c" class="x-path" pathLength="1"
+              d="M1864.45 1669.19
+                 L166.61 3349.76
+                 C128.22 3387.76 66.29 3387.44 28.29 3349.05
+                 C-9.71 3310.66 -9.39 3248.74 29.00 3210.74
+                 L1726.85 1530.17
+                 C1765.24 1492.17 1827.16 1492.49 1865.16 1530.88
+                 C1903.16 1569.27 1902.84 1631.19 1864.45 1669.19 Z"/>
+
+        <!-- Shape A: upper-left "\" diagonal pill -->
+        <path id="xp-a" class="x-path" pathLength="1"
+              d="M55.55 1669.19
+                 L752.17 2358.72
+                 C790.56 2396.72 852.48 2396.41 890.48 2358.02
+                 C928.48 2319.63 928.16 2257.70 889.77 2219.70
+                 L193.15 1530.17
+                 C154.76 1492.17 92.84 1492.49 54.84 1530.88
+                 C16.84 1569.27 17.16 1631.19 55.55 1669.19 Z"/>
+
+        <!-- Shape B: lower-right "\" diagonal pill -->
+        <path id="xp-b" class="x-path" pathLength="1"
+              d="M1030.19 2633.91
+                 L1753.39 3349.76
+                 C1791.78 3387.76 1853.71 3387.44 1891.71 3349.05
+                 C1929.71 3310.66 1929.39 3248.74 1891.00 3210.74
+                 L1167.79 2494.89
+                 C1129.40 2456.89 1067.48 2457.21 1029.48 2495.60
+                 C991.48 2533.99 991.80 2595.91 1030.19 2633.91 Z"/>
+
+      </g>
+    </svg>
+
+    <!-- ── HERO ─────────────────────────────────────────────── -->
+    <section id="hero">
+      <video id="hero-video" autoplay muted loop playsinline preload="auto">
+        <source src="Videos/Lines%20Animation.mov" type="video/mp4">
+      </video>
+      <nav id="hero-nav">
+        <span class="nav-logo">MARKA</span>
+      </nav>
+    </section>
+
+  </div><!-- end #hero-text-wrapper -->
+
+  <!-- ── WORK / PROJECTS CARD SLIDER ──────────────────────────── -->
+  <!-- 12 cards: 6 content cards + 6 product photos (from slider assets) -->
+  <section id="work-section">
+    <div id="work-sticky">
+
+      <!-- Paragraph pinned here — stays motionless while cards slide over it -->
+      <div id="slider-bg-text">
+        <p>
+          A critical design practice exploring the effects of technological
+          overconsumption, accelerated capitalism, and rapid social
+          development on the individual. It examines how systems of growth
+          reshape identity, behavior, and human relationships within
+          increasingly mediated societies. "Marka"&nbsp;<span class="arabic">(مركى)</span>
+          is a modular piece inspired by the collective memory of the Arabian
+          Peninsula. Refusing fixed definition and celebrating freedom 'much
+          like the Bedouin way of living,' it can function as a stool,
+          ottoman, book holder, armrest, floor chair, or lounge chair
+          depending on one's interaction with it.
+        </p>
+      </div>
+
+      <!-- Sliding card track — eager-loaded so widths are ready for JS height calc -->
+      <div id="work-track">
+        <div class="work-card"><img src="Images%20/Slider%20/Photo-01.png"   alt="Photo 1"   loading="eager"></div>
+        <div class="work-card"><img src="Images%20/Slider%20/Content-01.png" alt="Content 1" loading="eager"></div>
+        <div class="work-card"><img src="Images%20/Slider%20/Photo-02.png"   alt="Photo 2"   loading="eager"></div>
+        <div class="work-card"><img src="Images%20/Slider%20/Content-02.png" alt="Content 2" loading="eager"></div>
+        <div class="work-card"><img src="Images%20/Slider%20/Photo-03.png"   alt="Photo 3"   loading="eager"></div>
+        <div class="work-card"><img src="Images%20/Slider%20/Content-03.png" alt="Content 3" loading="eager"></div>
+        <div class="work-card"><img src="Images%20/Slider%20/Photo-04.png"   alt="Photo 4"   loading="eager"></div>
+        <div class="work-card"><img src="Images%20/Slider%20/Content-04.png" alt="Content 4" loading="eager"></div>
+        <div class="work-card"><img src="Images%20/Slider%20/Photo-05.png"   alt="Photo 5"   loading="eager"></div>
+        <div class="work-card"><img src="Images%20/Slider%20/Content-05.png" alt="Content 5" loading="eager"></div>
+        <div class="work-card"><img src="Images%20/Slider%20/Photo-06.png"   alt="Photo 6"   loading="eager"></div>
+        <div class="work-card"><img src="Images%20/Slider%20/Content-06.png" alt="Content 6" loading="eager"></div>
+      </div>
+
+      <!-- Thumbnail strip removed -->
+
+    </div>
+  </section>
+
+  <!-- ── STEPMOTION ───────────────────────────────────────────── -->
+  <section id="stepmotion">
+
+    <!-- top: 2 rows of product photos -->
+    <div id="sm-top">
+      <div id="sm-row1">
+        <img src="Images%20/Stepmotion/Background%20/Photo-001.png"  alt="" loading="lazy">
+        <img src="Images%20/Stepmotion/Background%20/Photo-002.png"  alt="" loading="lazy">
+        <img src="Images%20/Stepmotion/Background%20/Photo-003.png"  alt="" loading="lazy">
+        <img src="Images%20/Stepmotion/Background%20/Photo-004.png"  alt="" loading="lazy">
+        <img src="Images%20/Stepmotion/Background%20/Photo-005.png"  alt="" loading="lazy">
+        <img src="Images%20/Stepmotion/Background%20/Photo-006.png"  alt="" loading="lazy">
+      </div>
+      <div id="sm-row2">
+        <img src="Images%20/Stepmotion/Background%20/Photo-007.png"  alt="" loading="lazy">
+        <img src="Images%20/Stepmotion/Background%20/Photo-008.png"  alt="" loading="lazy">
+        <img src="Images%20/Stepmotion/Background%20/Photo-009.png"  alt="" loading="lazy">
+        <img src="Images%20/Stepmotion/Background%20/Photo-010.png"  alt="" loading="lazy">
+        <img src="Images%20/Stepmotion/Background%20/Photo-011.png"  alt="" loading="lazy">
+        <img src="Images%20/Stepmotion/Background%20/Photo-0012.png" alt="" loading="lazy">
+      </div>
+    </div>
+
+    <!-- bottom: concept sketches on white -->
+    <div id="sm-bottom">
+      <img src="Images%20/Stepmotion/Background%20/Sketches%202.png" alt="Concept sketches" loading="lazy">
+    </div>
+
+    <!-- centre: stop-motion 3-D render frames -->
+    <div id="sm-frames">
+      <img class="sm-frame active" src="Images%20/Stepmotion/stepmotion%20/01%20(1).png"  alt="">
+      <img class="sm-frame"        src="Images%20/Stepmotion/stepmotion%20/02.png"         alt="">
+      <img class="sm-frame"        src="Images%20/Stepmotion/stepmotion%20/03%20(1).png"  alt="">
+      <img class="sm-frame"        src="Images%20/Stepmotion/stepmotion%20/04.png"         alt="">
+      <img class="sm-frame"        src="Images%20/Stepmotion/stepmotion%20/05%202.png"    alt="">
+    </div>
+
+  </section>
+
+
+  <!-- ── ABOUT / FOOTER ───────────────────────────────────────── -->
+  <section id="about">
+    <div class="about-name">Adel<br>Serhany</div>
+
+    <div class="about-bio">
+      Adel Serhany is a designer based in Saudi Arabia whose work
+      explores critical design, cultural issues, and alternative ways
+      of seeing, acting, and moving. He is on a constant journey to
+      develop new ideas through rethought materials that contribute to
+      storytelling while remaining conscious of environmental impact.
+    </div>
+
+    <div class="about-social">
+      <a href="mailto:">Email</a>
+      <a href="#" target="_blank" rel="noopener">Linkedin</a>
+      <a href="#" target="_blank" rel="noopener">Instagram</a>
+      <a href="#" target="_blank" rel="noopener">IMDb</a>
+    </div>
+
+    <div class="about-spacer"></div>
+
+    <div class="about-footer">
+      <div class="about-credits">
+        Website Design by Adwa Almashjari<br>
+        2026 Marka &nbsp;·&nbsp; All rights reserved to Adel Serhany
+      </div>
+      <!-- Traditional Arabian fort / palace silhouette -->
+    </div>
+  </section>
+
+  <!-- ── SCRIPTS ──────────────────────────────────────────────── -->
+  <script>
+    /* SPLASH — fade out after animation completes */
+    const splash = document.getElementById('splash');
+    setTimeout(() => splash.classList.add('hidden'), 2500);
+
+    /* HERO VIDEO — fade in once enough data is buffered */
+    const heroVid = document.getElementById('hero-video');
+    function revealHero() { heroVid.classList.add('ready'); }
+    if (heroVid.readyState >= 2) {
+      revealHero();
+    } else {
+      heroVid.addEventListener('loadeddata', revealHero, { once: true });
+      heroVid.addEventListener('canplay',    revealHero, { once: true });
+    }
+
+    /* ── WORK CARD SLIDER ───────────────────────────────────────
+       Scroll-linked horizontal translateX.
+
+       CHOREOGRAPHY
+       ─────────────
+       • #work-section is tall; provides the scroll budget.
+       • #work-sticky pins (position:sticky) for the full duration.
+       • Text paragraph stays motionless inside the sticky element.
+       • Card track (z-index:10) slides LEFT over the fixed text.
+       • progress 0 → first card just enters from right edge.
+       • progress 1 → last card's right edge reaches right of viewport.
+         Section unpins at exactly this moment.
+
+       VARIABLE-WIDTH CARDS
+       ─────────────────────
+       Cards have width:auto driven by image aspect-ratio, so each
+       card has a different offsetWidth.  We sum them all to get the
+       true total travel distance and use that to set section height.
+    ─────────────────────────────────────────────────────────── */
+    (function () {
+      const section = document.getElementById('work-section');
+      const track   = document.getElementById('work-track');
+      if (!section || !track) return;
+
+      function isMobile() { return window.innerWidth <= 768; }
+
+      /* Total width of every card + every gap between them */
+      function totalTrackWidth() {
+        const cards = [...track.querySelectorAll('.work-card')];
+        if (!cards.length) return 0;
+        const gap = parseFloat(getComputedStyle(track).gap) || 24;
+        return cards.reduce((sum, c, i) =>
+          sum + c.offsetWidth + (i < cards.length - 1 ? gap : 0), 0);
+      }
+
+      /* Section height = horizontal travel + 1 viewport height.
+         Scroll budget  = section.height - window.innerHeight = totalTrackWidth
+         so progress reaches exactly 1 when the last card's right edge = vw. */
+      function setHeight() {
+        if (isMobile()) { section.style.height = ''; return; }
+        const tw = totalTrackWidth();
+        if (tw > 0) {
+          section.style.height = (tw + window.innerHeight) + 'px';
+        }
+      }
+
+      function update() {
+        if (isMobile()) { track.style.transform = ''; return; }
+
+        const rect       = section.getBoundingClientRect();
+        const scrollable = section.offsetHeight - window.innerHeight;
+        const scrolled   = Math.max(0, -rect.top);
+        const progress   = Math.min(1, scrolled / scrollable);
+
+        const vw = window.innerWidth;
+        const tw = totalTrackWidth();
+
+        /* initX  = vw  → first card's left edge is at the right viewport edge */
+        /* finalX = vw - tw → last card's right edge is at the right viewport edge */
+        const x = vw + progress * (-tw);   // = vw - progress * tw
+
+        track.style.transform = `translateX(${x}px)`;
+      }
+
+      /* Run init once images are decoded so offsetWidth is correct */
+      function init() { setHeight(); update(); }
+
+      if (document.readyState === 'complete') {
+        init();
+      } else {
+        window.addEventListener('load', init, { once: true });
+      }
+
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', () => { setHeight(); update(); });
+    })();
+
+    /* ── X-SHAPE SCROLL ROTATION ───────────────────────────────────
+       On load   : shape is at -45° → reads as "+" (plus form).
+       On scroll : rotates from -45° → 0° as user scrolls through the
+                   hero height, ending as "X" when work section takes over.
+       Linked directly to scroll position (no time-based tween).
+       Hides with opacity when stepmotion enters the viewport.        */
+    (function () {
+      const xBg       = document.getElementById('lines-bg');
+      const stepmotion = document.getElementById('stepmotion');
+      if (!xBg) return;
+
+      function updateX() {
+        const scrollY = window.scrollY || window.pageYOffset;
+        const heroH   = window.innerHeight;
+
+        /* Rotation: scrollY 0→heroH maps -45°→0° */
+        const prog = Math.min(1, Math.max(0, scrollY / heroH));
+        const deg  = -45 + prog * 45;
+        xBg.style.transform = `rotate(${deg}deg)`;
+
+        /* Hide instantly (no fade) once stepmotion fully covers the viewport */
+        if (stepmotion) {
+          const smTop = stepmotion.getBoundingClientRect().top;
+          xBg.style.opacity = (smTop <= 0) ? '0' : '1';
+        }
+      }
+
+      window.addEventListener('scroll', updateX, { passive: true });
+      window.addEventListener('resize', updateX, { passive: true });
+      updateX(); /* set initial state */
+    })();
+
+    /* STEPMOTION frame cycling — ~5 fps stop-motion feel */
+    const smFrames = Array.from(document.querySelectorAll('.sm-frame'));
+    if (smFrames.length) {
+      let smIdx = 0;
+      setInterval(() => {
+        smFrames[smIdx].classList.remove('active');
+        smIdx = (smIdx + 1) % smFrames.length;
+        smFrames[smIdx].classList.add('active');
+      }, 480);
+    }
+  </script>
+</body>
+</html>
