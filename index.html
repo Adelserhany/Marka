@@ -491,18 +491,17 @@
       }
       #work-track { gap: 12px; }
 
-      /* Cards: span ~viewport width so each card fully fits the screen.
-         height:auto lets the image's own aspect-ratio set the height —
-         no cropping, full image always visible.                      */
+      /* Cards: same fixed-height / variable-width rule as desktop, smaller height.
+         width:auto follows each image's natural aspect ratio — no cropping. */
       .work-card {
-        width: calc(100vw - 40px);
-        height: auto;
+        height: clamp(220px, 44vh, 360px);
+        width: auto;
         border-radius: 14px;
         flex-shrink: 0;
       }
       .work-card img {
-        width: 100%;
-        height: auto;
+        height: 100%;
+        width: auto;
         display: block;
       }
 
