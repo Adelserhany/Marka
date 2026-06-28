@@ -506,7 +506,17 @@
         display: block;
       }
 
-      #slider-bg-text { display: none; }
+      /* Show bg-text on mobile — visible before/between cards, behind them as they slide over */
+      #slider-bg-text {
+        padding-bottom: 0;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      #slider-bg-text p {
+        font-size: clamp(14px, 3.8vw, 18px);
+        line-height: 1.45;
+        max-width: 100%;
+      }
       #work-thumbs    { display: none; }
 
       /* ── Stepmotion ─────────────────────────────────────────────── */
